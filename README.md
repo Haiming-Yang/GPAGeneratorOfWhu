@@ -1,0 +1,2 @@
+# GPAGeneratorOfWhu
+用于计算武汉大学学生的GPA以及加权平均分
