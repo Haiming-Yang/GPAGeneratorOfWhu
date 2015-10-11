@@ -1,0 +1,1565 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>我的成绩单</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css?v=2.002"/>
+<link rel="stylesheet" type="text/css" href="../css/tab.css?v=2.002"/>
+<script type="text/javascript" src="../js/jquery.tools.min.js"></script>
+<script type="text/javascript" src="../js/table.js?v=2.002"></script>
+<script type="text/javascript"> 
+// perform JavaScript after the document is scriptable.
+$(function() {
+    // setup ul.tabs to work as tabs for each div directly under div.panes
+    $("ul.tabs").tabs("div.panes > div.panel",{
+		tabs:'li'
+	});
+	//弹出框部分代码  注释addby  黄婷婷  
+	var triggers = $(".overlay").overlay({
+	  target:$("#prompt",window.parent.parent.document),
+	  fixed:false,
+	
+	  top:'10',
+	 // left:'0px',
+	  closeOnClick:true,
+	  onBeforeLoad:function(){
+	  		var queryStr = this.getTrigger().attr("alt");
+		 	var wrap = this.getOverlay().find("iframe[name=overLayFrame]");
+		 	wrap.width(1200);
+		 	wrap.attr("src","/servlet/Svlt_QuerySelRelearnLsn?"+queryStr); 
+		 	
+		 	var length= 1280;	  	 
+		
+		 	var leftPosition = (length-1200)/2;
+		 	
+		 	this.getOverlay().css("left",leftPosition);
+		    parent.parent.startExpose();
+		    parent.parent.document.body.parentNode.style.overflow="scroll"; 
+	  },
+	  onBeforeClose:function(){parent.parent.closeExpose();},
+	  onClose:function(){
+	  	this.getOverlay().find("iframe[name=overLayFrame]").attr("src","");}
+  });
+  
+});
+
+
+ $(document).ready(function(){
+        $('.selectyze1').Selectyze({
+            theme : 'css3',        //下拉框的风格
+            effectOpen:'fade',      //下拉框弹出时的效果
+            effectClose:'slide'     //下拉框收回时的效果
+        });
+    });
+
+</script>
+</head>
+
+<body>
+
+
+
+<!--首先判断是否为合法用户-->
+
+
+
+
+
+
+
+
+
+
+
+	<div id="searchBox" style="margin-left:auto;margin-right:auto;width:680px;">
+	<form name="searchScore" style="float:left" method="post"action="/servlet/Svlt_QueryStuScore">
+        	
+
+学年&nbsp;<SELECT style="width:90PX" NAME="year">
+	
+	<OPTION value="0"  selected >全部</OPTION>
+	
+	<OPTION value="2014" >2014-2015</OPTION>
+	
+	<OPTION value="2015" >2015-2016</OPTION>
+	
+	<OPTION value="2016" >2016-2017</OPTION>
+	
+	</SELECT>&nbsp;&nbsp;&nbsp;
+学期&nbsp;<SELECT style="width:55PX" NAME="term"> 
+	<OPTION value="" selected >全部</OPTION>
+	<OPTION value="上">上</OPTION>
+	<OPTION value="下">下</OPTION>
+</SELECT>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            课程类型
+            <select class="input" style="width:78px" name="learnType">
+                <option value=""  selected="selected" >全部</option>
+                <option value="公共必修" >公共必修</option>
+                <option value="公共选修" >公共选修</option>
+                <option value="专业必修" >专业必修</option>
+                <option value="专业选修" >专业选修</option>
+            </select>&nbsp;&nbsp;
+            成绩
+            <select class="input" style="width:80px" name="scoreFlag">
+            	<option value="0"  selected="selected" >全部</option>
+                <option value="4" >已出成绩</option>
+                <option value = "1" >及格</option>
+                <option value="2" >不及格</option>
+                <option value="3" >未出成绩</option>
+            </select>&nbsp;
+            <input name="submit" type="submit" class="searchBtb" value="查询"/>
+      </form>
+            
+         <form name="searchScore" style="float:left" method="post" action="/servlet/Svlt_QueryStuScore">
+            <input type="hidden" name="year" value="0"/>
+            <input type="hidden" name="term" value=""/>
+            <input type="hidden" name="learnType" value=""/>
+            <input type="hidden" name="scoreFlag" value="0"/>
+            &nbsp; &nbsp;<input name="submit" type="submit" class="searchBtb" id="searchAll" value="所有"/>
+         </form>
+          </div>
+           
+<table class="table listTable">
+<tr><th>课头号</th><th>课程名称</th><th>课程类型</th><th>学分</th><th>教师</th><th>授课学院</th><th>学习类型</th><th>学年</th><th>学期</th><th>成绩</th><th>操作</th></tr>
+	     
+	    
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20141030125</td>
+					
+					<td>信息系统导论实验</td>
+					
+						
+					
+					
+                    <td>专业必修</td>
+					<td>0.5</td>
+					<td>沈志东</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>上</td>
+					<td>87.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20141030127</td>
+					
+					<td>计算机基础及应用</td>
+					
+						
+					
+					
+                    <td>专业必修</td>
+					<td>2.0</td>
+					<td>杨敏</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>上</td>
+					<td>88.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20141030129</td>
+					
+					<td>数字工程引论</td>
+					
+						
+					
+					
+                    <td>专业选修</td>
+					<td>1.5</td>
+					<td>张目</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>上</td>
+					<td>92.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20141030132</td>
+					
+					<td>物联网工程导论</td>
+					
+						
+					
+					
+                    <td>专业选修</td>
+					<td>1.0</td>
+					<td>唐存琛</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>上</td>
+					<td>86.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20141030137</td>
+					
+					<td>信息系统导论</td>
+					
+						
+					
+					
+                    <td>专业必修</td>
+					<td>1.0</td>
+					<td>沈志东</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>上</td>
+					<td>86.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20141030140</td>
+					
+					<td>计算机基础及应用上机1</td>
+					
+						
+					
+					
+                    <td>专业必修</td>
+					<td>0.5</td>
+					<td>杨敏</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>上</td>
+					<td>93.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20141030146</td>
+					
+					<td>英语听说1</td>
+					
+						
+					
+					
+                    <td>专业必修</td>
+					<td>2.0</td>
+					<td>国软外教2</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>上</td>
+					<td>76.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20141040335</td>
+					
+					<td>乒乓球（初级）</td>
+					
+						
+					
+					
+                    <td>公共必修</td>
+					<td>1.0</td>
+					<td>刘振清</td>
+					<td>体育部</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>上</td>
+					<td>90.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20141041046</td>
+					
+					<td>军事理论</td>
+					
+						
+					
+					
+                    <td>公共必修</td>
+					<td>1.0</td>
+					<td>冯智</td>
+					<td>军事教研室</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>上</td>
+					<td>85.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20141055372</td>
+					
+					<td>大学英语2</td>
+					
+						
+					
+					
+                    <td>公共必修</td>
+					<td>3.0</td>
+					<td>彭志军</td>
+					<td>大学英语部</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>上</td>
+					<td>80.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20141056007</td>
+					
+					<td>高等数学B1</td>
+					
+						
+					
+					
+                    <td>公共必修</td>
+					<td>5.0</td>
+					<td>胡元明</td>
+					<td>公共数学教学</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>上</td>
+					<td>95.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20141058028</td>
+					
+					<td>中国近现代史纲要</td>
+					
+						
+					
+					
+                    <td>公共必修</td>
+					<td>2.0</td>
+					<td>李华</td>
+					<td>公共政治教学</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>上</td>
+					<td>84.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20141058085</td>
+					
+					<td>思想道德修养与法律基础</td>
+					
+						
+					
+					
+                    <td>公共必修</td>
+					<td>3.0</td>
+					<td>史姗姗</td>
+					<td>公共政治教学</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>上</td>
+					<td>86.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20142005474</td>
+					
+					<td>KAB创业基础</td>
+					
+						
+					
+					
+                    <td>公共选修</td>
+					<td>2.0</td>
+					<td>王罡</td>
+					<td>经济与管理学院</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>下</td>
+					<td>92.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20142021160</td>
+					
+					<td>智能问题求解方法</td>
+					
+						
+					
+					
+                    <td>公共选修</td>
+					<td>1.0</td>
+					<td>刘华俊</td>
+					<td>计算机学院</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>下</td>
+					<td>94.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20142021164</td>
+					
+					<td>信息安全概论</td>
+					
+						
+					
+					
+                    <td>公共选修</td>
+					<td>1.0</td>
+					<td>杜瑞颖</td>
+					<td>计算机学院</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>下</td>
+					<td>86.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20142030099</td>
+					
+					<td>人机交互</td>
+					
+						
+					
+					
+                    <td>专业必修</td>
+					<td>1.0</td>
+					<td>邓娟</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>下</td>
+					<td>87.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20142030109</td>
+					
+					<td>人机交互实验</td>
+					
+						
+					
+					
+                    <td>专业必修</td>
+					<td>0.5</td>
+					<td>邓娟</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>下</td>
+					<td>91.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20142030113</td>
+					
+					<td>英语听说2</td>
+					
+						
+					
+					
+                    <td>专业必修</td>
+					<td>2.0</td>
+					<td>国软外教2</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>下</td>
+					<td>86.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20142030119</td>
+					
+					<td>C++程序设计</td>
+					
+						
+					
+					
+                    <td>专业选修</td>
+					<td>2.0</td>
+					<td>薛超英</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>下</td>
+					<td>76.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20142030123</td>
+					
+					<td>离散数学</td>
+					
+						
+					
+					
+                    <td>专业必修</td>
+					<td>3.0</td>
+					<td>唐存琛</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>下</td>
+					<td>76.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20142030125</td>
+					
+					<td>C++程序设计实验</td>
+					
+						
+					
+					
+                    <td>专业选修</td>
+					<td>0.5</td>
+					<td>薛超英</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>下</td>
+					<td>97.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20142040316</td>
+					
+					<td>乒乓球（高级）</td>
+					
+						
+					
+					
+                    <td>公共必修</td>
+					<td>1.0</td>
+					<td>刘振清</td>
+					<td>体育部</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>下</td>
+					<td>80.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20142055443</td>
+					
+					<td>大学英语3</td>
+					
+						
+					
+					
+                    <td>公共必修</td>
+					<td>3.0</td>
+					<td>彭志军</td>
+					<td>大学英语部</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>下</td>
+					<td>83.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20142056008</td>
+					
+					<td>高等数学B2</td>
+					
+						
+					
+					
+                    <td>公共必修</td>
+					<td>5.0</td>
+					<td>马际华</td>
+					<td>公共数学教学</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>下</td>
+					<td>50.0</td>
+					
+					
+					
+					
+					<td>
+					<input class="btn overlay" type="button" alt="action=failed_relearn&lessonID=17003304&failLsnheadID=20142056008&academicID=56&learnType=普通" value="重修"/>
+					</td>
+					
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20142056087</td>
+					
+					<td>线性代数B</td>
+					
+						
+					
+					
+                    <td>公共必修</td>
+					<td>3.0</td>
+					<td>王绍华</td>
+					<td>公共数学教学</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>下</td>
+					<td>81.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20142057027</td>
+					
+					<td>大学物理B（上）</td>
+					
+						
+					
+					
+                    <td>公共选修</td>
+					<td>3.0</td>
+					<td>李长真</td>
+					<td>公共物理教学</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>下</td>
+					<td>77.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20142058027</td>
+					
+					<td>马克思主义基本原理概论</td>
+					
+						
+					
+					
+                    <td>公共必修</td>
+					<td>3.0</td>
+					<td>何鹏</td>
+					<td>公共政治教学</td>
+					
+					<td>普通</td>	
+					<td>2014</td>
+					<td>下</td>
+					<td>80.0</td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20151012104</td>
+					
+					<td>人文化学</td>
+					
+						
+					
+					
+                    <td>公共选修</td>
+					<td>2.0</td>
+					<td>胡继明</td>
+					<td>化学与分子科学学院</td>
+					
+					<td>普通</td>	
+					<td>2015</td>
+					<td>上</td>
+					<td></td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20151030152</td>
+					
+					<td>初级项目实践（暑期）</td>
+					
+						
+					
+					
+                    <td>专业必修</td>
+					<td>1.0</td>
+					<td>张雯</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2015</td>
+					<td>上</td>
+					<td></td>
+					
+					
+					
+					
+					<td>
+					<input class="btn overlay" type="button" alt="action=failed_relearn&lessonID=1300866&failLsnheadID=20151030152&academicID=30&learnType=普通" value="重修"/>
+					</td>
+					
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20151030154</td>
+					
+					<td>面向对象程序设计实验</td>
+					
+						
+					
+					
+                    <td>专业必修</td>
+					<td>0.5</td>
+					<td>刘峰</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2015</td>
+					<td>上</td>
+					<td></td>
+					
+					
+					
+					
+					<td>
+					<input class="btn overlay" type="button" alt="action=failed_relearn&lessonID=1300871&failLsnheadID=20151030154&academicID=30&learnType=普通" value="重修"/>
+					</td>
+					
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20151030156</td>
+					
+					<td>数据结构与算法实验</td>
+					
+						
+					
+					
+                    <td>专业必修</td>
+					<td>0.5</td>
+					<td>薛超英</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2015</td>
+					<td>上</td>
+					<td></td>
+					
+					
+					
+					
+					<td>
+					<input class="btn overlay" type="button" alt="action=failed_relearn&lessonID=1300875&failLsnheadID=20151030156&academicID=30&learnType=普通" value="重修"/>
+					</td>
+					
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20151058267</td>
+					
+					<td>毛泽东思想和中国特色社会主义理论体系概论</td>
+					
+						
+					
+					
+                    <td>公共必修</td>
+					<td>4.0</td>
+					<td>朱国伟</td>
+					<td>公共政治教学</td>
+					
+					<td>普通</td>	
+					<td>2015</td>
+					<td>上</td>
+					<td></td>
+					
+					
+					
+					
+					<td>
+					<input class="btn overlay" type="button" alt="action=failed_relearn&lessonID=18000002&failLsnheadID=20151058267&academicID=58&learnType=普通" value="重修"/>
+					</td>
+					
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20151030141</td>
+					
+					<td>数据结构与算法</td>
+					
+						
+					
+					
+                    <td>专业必修</td>
+					<td>3.0</td>
+					<td>薛超英</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2015</td>
+					<td>上</td>
+					<td></td>
+					
+					
+					
+					
+					<td>
+					<input class="btn overlay" type="button" alt="action=failed_relearn&lessonID=0700374&failLsnheadID=20151030141&academicID=30&learnType=普通" value="重修"/>
+					</td>
+					
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20151030145</td>
+					
+					<td>计算机组织与体系结构</td>
+					
+						
+					
+					
+                    <td>专业必修</td>
+					<td>3.0</td>
+					<td>赵小刚</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2015</td>
+					<td>上</td>
+					<td></td>
+					
+					
+					
+					
+					<td>
+					<input class="btn overlay" type="button" alt="action=failed_relearn&lessonID=0801460&failLsnheadID=20151030145&academicID=30&learnType=普通" value="重修"/>
+					</td>
+					
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20151056067</td>
+					
+					<td>概率论与数理统计B</td>
+					
+						
+					
+					
+                    <td>公共必修</td>
+					<td>3.0</td>
+					<td>王文祥</td>
+					<td>公共数学教学</td>
+					
+					<td>普通</td>	
+					<td>2015</td>
+					<td>上</td>
+					<td></td>
+					
+					
+					
+					
+					<td>
+					<input class="btn overlay" type="button" alt="action=failed_relearn&lessonID=17003296&failLsnheadID=20151056067&academicID=56&learnType=普通" value="重修"/>
+					</td>
+					
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20151030147</td>
+					
+					<td>C#程序设计</td>
+					
+						
+					
+					
+                    <td>专业选修</td>
+					<td>2.0</td>
+					<td>韩波</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2015</td>
+					<td>上</td>
+					<td></td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20151057041</td>
+					
+					<td>大学物理B（下） </td>
+					
+						
+					
+					
+                    <td>公共选修</td>
+					<td>3.0</td>
+					<td>艾志伟</td>
+					<td>公共物理教学</td>
+					
+					<td>普通</td>	
+					<td>2015</td>
+					<td>上</td>
+					<td></td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20151030149</td>
+					
+					<td>面向对象程序设计（JAVA）</td>
+					
+						
+					
+					
+                    <td>专业必修</td>
+					<td>2.0</td>
+					<td>刘峰</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2015</td>
+					<td>上</td>
+					<td></td>
+					
+					
+					
+					
+					<td>
+					<input class="btn overlay" type="button" alt="action=failed_relearn&lessonID=0801645&failLsnheadID=20151030149&academicID=30&learnType=普通" value="重修"/>
+					</td>
+					
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20151030151</td>
+					
+					<td>C#程序设计实验</td>
+					
+						
+					
+					
+                    <td>专业选修</td>
+					<td>0.5</td>
+					<td>韩波</td>
+					<td>国际软件学院</td>
+					
+					<td>普通</td>	
+					<td>2015</td>
+					<td>上</td>
+					<td></td>
+					
+					
+					
+					
+					
+					<td><input class="btn overlay" type="button" disabled="disabled" value="无"/></td>
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20151040508</td>
+					
+					<td>排球（初级）</td>
+					
+						
+					
+					
+                    <td>公共必修</td>
+					<td>1.0</td>
+					<td>李平斌</td>
+					<td>体育部</td>
+					
+					<td>普通</td>	
+					<td>2015</td>
+					<td>上</td>
+					<td></td>
+					
+					
+					
+					
+					<td>
+					<input class="btn overlay" type="button" alt="action=failed_relearn&lessonID=TIYUA003&failLsnheadID=20151040508&academicID=40&learnType=普通" value="重修"/>
+					</td>
+					
+					
+					
+				</tr>
+			
+			
+	    		
+	    		
+	    		
+	    		
+	    		
+				<tr null>					
+					<td>20151055304</td>
+					
+					<td>大学英语4</td>
+					
+						
+					
+					
+                    <td>公共必修</td>
+					<td>3.0</td>
+					<td>彭志军</td>
+					<td>大学英语部</td>
+					
+					<td>普通</td>	
+					<td>2015</td>
+					<td>上</td>
+					<td></td>
+					
+					
+					
+					
+					<td>
+					<input class="btn overlay" type="button" alt="action=failed_relearn&lessonID=18200004&failLsnheadID=20151055304&academicID=55&learnType=普通" value="重修"/>
+					</td>
+					
+					
+					
+				</tr>
+			
+			
+</table>
+<div class="page_nav">
+        	<div class="total_count">共有42条记录</div>
+</div>
+<!--  
+<div id="warning" 
+						style="border: 1px dotted red; line-height: 20px; margin: 10px; padding: 10px; text-align: left;">
+						<font color="#ff0000">提示: </font>根据学生的学习类型和成绩类型，用不同颜色显示学生的成绩状况。其中，
+						<font color="#800000">红色</font>表示学习类型为“重修”、“第二次重修”和“及格重修”；
+						<font color="#008000">绿色</font>表示学习类型为“辅修”；
+						<font color="#000000">黑色</font>表示学习类型为“普通”。
+					</div>
+         
+  -->    
+</body>
+</html>
+

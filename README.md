@@ -1,2 +1,6 @@
 # GPAGeneratorOfWhu
 用于计算武汉大学学生的GPA以及加权平均分
+
+使用JAVA实现，采用MVC架构，程序非常Strong，可以直接读取用爬虫从教务爬取的成绩的html文件，并使用jsoup解析，计算GPA和加权平均分后可以导出为xls文件。
+
+附带能爬取教务系统的爬虫CrawlForm，采用cookie模拟登录以及HTTPRequest包实现。
